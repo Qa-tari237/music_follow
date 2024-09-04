@@ -1,0 +1,123 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music-follow - Hit Music Only</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <header>
+        {% block content%}
+        <nav class="navbar">
+            <img src="photo/logo.jpg" alt="Music_Follow Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="music_follow.html">Music_Follow</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="social.html">Social Club</a></li>
+                <li><a href="video.html">Vidéo Club</a></li>
+                <li> 
+                    <a>More</a>
+                    <ul class="dropdown">
+                        
+                        <li><a href="chat.html">Chats</a></li>
+                        <li><a href="audio.html">Audio</a></li>
+                        <li><a href="videos.html">Videos</a></li>
+                        <li><a href="reels.html">Reels</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="icon">▶ Live</a>
+                
+                    <div class="container">
+                        <a href="#" id="toggle-link">Profile</a>
+                        <ul id="toggle-list" class="hidden">
+
+                
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            <li><a href="{% url 'profile' %}">View profile</a></li>
+                           
+                            
+                        
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+        {% endblock %}
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="banner">
+            <h3>Recent Reels</h3>
+        </section>
+
+        <!-- Cards section -->
+        <section class="cards">
+            <div class="card">
+                <img src="card1.png" alt="Card 1">
+                <p>CE SOIR 21H10 SUR NRJ12</p>
+            </div>
+            <div class="card">
+                <img src="card2.png" alt="Card 2">
+                <p>FUTUR HIT DE LA SEMAINE</p>
+            </div>
+            <div class="card">
+                <img src="card3.png" alt="Card 3">
+                <p>DIE WITH A SMILE</p>
+            </div>
+            <div class="card">
+                <img src="card4.png" alt="Card 4">
+                <p>TOUT L’ÉTÉ, TOUS LES SOIRS SUR NRJ</p>
+            </div>
+        </section>
+    </main>
+    <section class="banner">
+        <h3>Top 3 Most viewed videos</h3>
+    </section>
+    <div class="video-container">
+      <!-- Video items will be dynamically added here -->
+    </div>
+    <section class="banner">
+        <h3>Top 3 Most listened songs</h3>
+    </section>
+
+    <ul class="song-list">
+        <li>
+          <div class="song">
+            <h2>Song 1</h2>
+            <audio controls>
+              <source src="song1.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </li>
+        <li>
+          <div class="song">
+            <h2>Song 2</h2>
+            <audio controls>
+              <source src="song2.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </li>
+        <li>
+            <div class="song">
+                <h2>Song 3</h2>
+                <audio controls>
+                  <source src="song2.mp3" type="audio/mpeg">
+                </audio>
+              </div>
+            </li>
+            <li>
+                <section class="banner">
+                    <h3>Contact and follow us</h3>
+                </section>
+  
+                <script src="{% static 'js/home.js' %}" defer></script>
+  
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- streaming/templates/streaming/live_session_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ live_session.title }}</title>
+</head>
+<body>
+    <h1>{{ live_session.title }}</h1>
+    <p>Hosted by: {{ live_session.host }}</p>
+
+    <h2>Subscribers</h2>
+     <ul>
+        {% for subscriber in subscribers %}
+            <li>{{ subscriber.user.username }}</li>
+        {% endfor %}
+     </ul>
+
+    <h2>Reactions</h2>
+     <ul>
+        {% for reaction in reactions %}
+            <li>{{ reaction.user.username }}: {{ reaction.reaction_type }}</li>
+        {% endfor %}
+     </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ reaction_form.as_p }}
+        <button type="submit">React</button>
+    </form>
+</body>
+</html>

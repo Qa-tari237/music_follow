@@ -1,0 +1,87 @@
+<!-- templates/upload.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile Picture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .upload-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+        .upload-container h1 {
+            margin-bottom: 20px;
+        }
+        .upload-container input[type="text"],
+        .upload-container input[type="file"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+        }
+        .upload-container button {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-container button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Upload Profile Picture</h1>
+        
+        <input type="file" id="profile-picture" accept="image/*">
+        <button onclick="uploadImage()">Upload</button>
+    </div>
+
+    <script>
+        function uploadImage() {
+            var name = document.getElementById('name').value;
+            var fileInput = document.getElementById('profile-picture');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+
+            formData.append('name', name);
+            formData.append('profile_picture', file);
+
+            fetch('/upload/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to upload image');
+            });
+        }
+    </script>
+</body>
+</html>

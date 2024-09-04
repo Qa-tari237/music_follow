@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+      <!-- Navigation bar -->
+      <header>
+        <nav class="navbar">
+            <img src="photo/logo.jpg" alt="Music_Follow Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="music_follow.html">Music_Follow</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="social.html">Social Club</a></li>
+                <li><a href="video.html">Vidéo Club</a></li>
+                <li> 
+                    <a>More</a>
+                    <ul class="dropdown">
+                        
+                        <li><a href="#">Chats</a></li>
+                        <li><a href="audio.html">Audio</a></li>
+                        <li><a href="videos.html">Videos</a></li>
+                        <li><a href="reels.html">Reels</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav-icons">
+                <a href="lives.html" class="icon">▶ Live</a>
+                
+                    
+            </div>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-image">
+                {% for image in images %}
+                <img id="profilePic" src="{{ user_profile.profile_picture.url }}" alt="User Profile Picture">
+                {% endfor %}
+
+            </div>
+            <div class="upload-btn-wrapper">
+                
+                <a  class="upload-btn" href="{% url 'upload' %}">Upload a picture</a>
+                
+            </div>
+            <div class="profile-info">
+                <h2>{{ profile.user }}</h2>
+                <p>{{ user.email }}</p>
+                <p>{{ profile.telephone }}</p>
+                <p>{{ profile.status }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/home.js' %}" defer></script>
+</body>
+</html>
