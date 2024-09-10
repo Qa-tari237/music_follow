@@ -41,10 +41,7 @@
     <div class="profile-container">
         <div class="profile-card">
             <div class="profile-image">
-                {% for image in images %}
-                <img id="profilePic" src="{{ user_profile.profile_picture.url }}" alt="User Profile Picture">
-                {% endfor %}
-
+                <img id="profilePic" src="../../{{info.profile}}" alt="User Profile Picture">
             </div>
             <div class="upload-btn-wrapper">
                 
@@ -52,10 +49,10 @@
                 
             </div>
             <div class="profile-info">
-                <h2>{{ profile.user }}</h2>
-                <p>{{ user.email }}</p>
-                <p>{{ profile.telephone }}</p>
-                <p>{{ profile.status }}</p>
+                <h2>{{ info.other.username }}</h2>
+                <p>{{ info.other.email }}</p>
+                <p>{{ info.other.tel }}</p>
+                <p>{{ info.other.role }}</p>
             </div>
         </div>
     </div>

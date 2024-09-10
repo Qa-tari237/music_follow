@@ -47,41 +47,14 @@
 <body>
     <div class="upload-container">
         <h1>Upload Profile Picture</h1>
-        
-        <input type="file" id="profile-picture" accept="image/*">
-        <button onclick="uploadImage()">Upload</button>
+        <div style="color: red;">
+            {{errors}}
+        </div>
+        <form action="{% url 'upload' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+        <input type="file" name="profile_picture" accept="image/*">
+        <button>Upload</button>
+    </form>
     </div>
-
-    <script>
-        function uploadImage() {
-            var name = document.getElementById('name').value;
-            var fileInput = document.getElementById('profile-picture');
-            var file = fileInput.files[0];
-            var formData = new FormData();
-
-            formData.append('name', name);
-            formData.append('profile_picture', file);
-
-            fetch('/upload/', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    alert(data.message);
-                } else if (data.error) {
-                    alert(data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to upload image');
-            });
-        }
-    </script>
 </body>
 </html>

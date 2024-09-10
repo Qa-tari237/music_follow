@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import Profile
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'user_id', 'user_email', 'profile_picture_display', 'telephone', 'status')
+    list_display = ('user', 'user_id', 'user_email', 'profile_picture_display')
 
     def user_id(self, obj):
         return obj.user.id

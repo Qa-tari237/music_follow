@@ -35,15 +35,10 @@
                 <a href="#" class="icon">▶ Live</a>
                 
                     <div class="container">
-                        <a href="#" id="toggle-link">Profile</a>
+                        <a href="{% url 'profile' %}" id="toggle-link">Profile</a>
                         <ul id="toggle-list" class="hidden">
-
-                
                             <li><a href="{% url 'logout' %}">Logout</a></li>
-                            <li><a href="{% url 'profile' %}">View profile</a></li>
-                           
-                            
-                        
+                            <li><a href="{% url 'profile' %}">View profile</a></li>                 
                         </ul>
                     </div>
             </div>
